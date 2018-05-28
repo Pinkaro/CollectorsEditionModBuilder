@@ -5,16 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModBuilder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
-            <TabItem Header="Bodyparts">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="NPCs">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
+        Title="MainWindow" Height="720" Width="1280">
 
-    </Grid>
+    <TabControl >
+        <TabItem Header="Bodyparts">
+            <Grid Background="#FFE5E5E5">
+                <Label Content="Bodypart" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="selectedBodypart" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Margin="0,26,0,0" SelectionChanged="SelectedBodypart_SelectionChanged">
+                    <ComboBoxItem>Head</ComboBoxItem>
+                    <ComboBoxItem>Torso</ComboBoxItem>
+                    <ComboBoxItem>Right Arm</ComboBoxItem>
+                    <ComboBoxItem>Left Arm</ComboBoxItem>
+                    <ComboBoxItem>Right Leg</ComboBoxItem>
+                    <ComboBoxItem>Left Leg</ComboBoxItem>
+                </ComboBox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="150">
+                    <Grid x:Name="Charisma">
+                        <Label Content="Charisma" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="InputCharisma" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="50" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Constitution">
+                        <Label Content="Constitution" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="InputConstitution" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="50" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Dexterity">
+                        <Label Content="Dexterity" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="InputDexterity" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="50" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Intelligence">
+                        <Label Content="Intelligence" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="InputIntelligence" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="50" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Strength">
+                        <Label Content="Strength" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="InputStrength" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="50" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Wisdom">
+                        <Label Content="Wisdom" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
+                        <TextBox x:Name="InputWisdom" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="50" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                
+            </Grid>
+        </TabItem>
+        <TabItem Header="NPCs">
+            <Grid Background="#FFE5E5E5">
+                <Label Content="TODO" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="400"/>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+
+
 </Window>
