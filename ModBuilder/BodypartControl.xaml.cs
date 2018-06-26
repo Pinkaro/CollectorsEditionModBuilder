@@ -203,7 +203,7 @@ namespace ModBuilder
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                InputMagicSideAnimationPath.Text = openFileDialog.FileName;
+                InputIconPath.Text = openFileDialog.FileName;
         }
 
 
