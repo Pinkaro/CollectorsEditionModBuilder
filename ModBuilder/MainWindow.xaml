@@ -144,6 +144,50 @@
                                 </StackPanel>
 
                             </Expander>
+                            <Expander Header="Attack Animation" Background="LightGray">
+                                <StackPanel>
+                                    <Label>Attack Up Animation Path</Label>
+                                    <Grid Margin="0,-5,0,5">
+                                        <TextBox x:Name="InputAttackUpAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                                        <Button Width="30" HorizontalAlignment="Right" Click="AttackUpAnimationPath_Click">...</Button>
+                                    </Grid>
+                                    <Separator/>
+                                    <Label>Attack Down Animation Path</Label>
+                                    <Grid Margin="0,-5,0,5">
+                                        <TextBox x:Name="InputAttackDownAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                                        <Button Width="30" HorizontalAlignment="Right" Click="AttackDownAnimationPath_Click">...</Button>
+                                    </Grid>
+                                    <Separator/>
+                                    <Label>Attack Side Animation Path</Label>
+                                    <Grid Margin="0,-5,0,5">
+                                        <TextBox x:Name="InputAttackSideAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                                        <Button Width="30" HorizontalAlignment="Right" Click="AttackSideAnimationPath_Click">...</Button>
+                                    </Grid>
+                                </StackPanel>
+
+                            </Expander>
+                            <Expander Header="Magic Animation" Background="LightGray">
+                                <StackPanel>
+                                    <Label>Magic Up Animation Path</Label>
+                                    <Grid Margin="0,-5,0,5">
+                                        <TextBox x:Name="InputMagicUpAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                                        <Button Width="30" HorizontalAlignment="Right" Click="MagicUpAnimationPath_Click">...</Button>
+                                    </Grid>
+                                    <Separator/>
+                                    <Label>Magic Down Animation Path</Label>
+                                    <Grid Margin="0,-5,0,5">
+                                        <TextBox x:Name="InputMagicDownAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                                        <Button Width="30" HorizontalAlignment="Right" Click="MagicDownAnimationPath_Click">...</Button>
+                                    </Grid>
+                                    <Separator/>
+                                    <Label>Magic Side Animation Path</Label>
+                                    <Grid Margin="0,-5,0,5">
+                                        <TextBox x:Name="InputMagicSideAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                                        <Button Width="30" HorizontalAlignment="Right" Click="MagicSideAnimationPath_Click">...</Button>
+                                    </Grid>
+                                </StackPanel>
+
+                            </Expander>
 
                         </StackPanel>
                     </ScrollViewer>

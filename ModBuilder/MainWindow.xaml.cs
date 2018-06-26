@@ -161,6 +161,48 @@ namespace ModBuilder
         }
         #endregion
 
+        #region AttackAnimation
+        private void AttackUpAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputAttackUpAnimationPath.Text = TrimPath(openFileDialog.FileName);
+        }
+        private void AttackDownAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputAttackDownAnimationPath.Text = TrimPath(openFileDialog.FileName);
+        }
+        private void AttackSideAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputAttackSideAnimationPath.Text = TrimPath(openFileDialog.FileName);
+        }
+        #endregion
+
+        #region MagicAnimation
+        private void MagicUpAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputMagicUpAnimationPath.Text = TrimPath(openFileDialog.FileName);
+        }
+        private void MagicDownAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputMagicDownAnimationPath.Text = TrimPath(openFileDialog.FileName);
+        }
+        private void MagicSideAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputMagicSideAnimationPath.Text = TrimPath(openFileDialog.FileName);
+        }
+        #endregion
+
         public string TrimPath(string path)
         {
             string[] newPath;
@@ -194,52 +236,86 @@ namespace ModBuilder
 
             Int32.TryParse(InputHealthpoints.Text, out int maxHP);
 
+            Bodypart b = null;
+
             switch (bodypart)
             {
                 case "Head":
-                    Head h = new Head(constitution,intelligence,wisdom,charisma,color,bodytype,race);
-                    h.id = id;
-                    h.MaxHP = maxHP;
-                    h.skillIDs = new string[3]{InputSkill1.Text,InputSkill2.Text,InputSkill3.Text};
+                    b = new Head(constitution, intelligence, wisdom, charisma, color, bodytype, race);
+                    break;
+                case "Torso":
+                    b = new Torso(constitution, strength, dexterity, charisma, color, bodytype, race);
+                    break;
+                case "Right Arm":
+                    b = new RightArm(constitution, strength, dexterity, charisma, color, bodytype, race);
+                    break;
+                case "Left Arm":
+                    b = new LeftArm(constitution, strength, dexterity, charisma, color, bodytype, race);
+                    break;
+                case "Right Leg":
+                    b = new RightLeg(constitution, strength, dexterity, charisma, color, bodytype, race);
+                    break;
+                case "Left Leg":
+                    b = new LeftLeg(constitution, strength, dexterity, charisma, color, bodytype, race);
+                    break;
+            }
+            
+            b.id = id;
+            b.MaxHP = maxHP;
+
+            b.idleDownAnimation = InputIdleDownAnimationPath.Text;
+            b.idleUpAnimation = InputIdleUpAnimationPath.Text;
+            b.idleSideAnimation = InputIdleSideAnimationPath.Text;
+
+            b.walkDownAnimation = InputWalkDownAnimationPath.Text;
+            b.walkUpAnimation = InputWalkUpAnimationPath.Text;
+            b.walkSideAnimation = InputWalkSideAnimationPath.Text;
+
+            b.attackDownAnimation = InputAttackDownAnimationPath.Text;
+            b.attackUpAnimation = InputAttackUpAnimationPath.Text;
+            b.attackSideAnimation = InputAttackSideAnimationPath.Text;
+
+            b.magicDownAnimation = InputMagicDownAnimationPath.Text;
+            b.magicUpAnimation = InputMagicUpAnimationPath.Text;
+            b.magicSideAnimation = InputMagicSideAnimationPath.Text;
+
+
+
+            switch (bodypart)
+            {
+                case "Head":
+                    Head h = b as Head;
+                    h.skillIDs = new string[3] { InputSkill1.Text, InputSkill2.Text, InputSkill3.Text };
                     XMLManager.Save(path,h);
                     break;
                 case "Torso":
-                    Torso t = new Torso(constitution, strength, dexterity, charisma, color, bodytype, race);
-                    t.id = id;
-                    t.MaxHP = maxHP;
+                    Torso t = b as Torso;
                     t.skillIDs = new string[2] { InputSkill1.Text, InputSkill2.Text };
                     XMLManager.Save(path, t);
                     break;
                 case "Right Arm":
-                    RightArm ra = new RightArm(constitution,strength,dexterity,charisma,color,bodytype,race);
-                    ra.id = id;
-                    ra.MaxHP = maxHP;
+                    RightArm ra = b as RightArm;
                     ra.skillIDs = new string[2] { InputSkill1.Text, InputSkill2.Text };
                     XMLManager.Save(path, ra);
                     break;
                 case "Left Arm":
-                    LeftArm la = new LeftArm(constitution, strength, dexterity, charisma, color, bodytype, race);
-                    la.id = id;
-                    la.MaxHP = maxHP;
+                    LeftArm la = b as LeftArm;
                     la.skillIDs = new string[2] { InputSkill1.Text, InputSkill2.Text };
                     XMLManager.Save(path, la);
                     break;
                 case "Right Leg":
-                    RightLeg rl = new RightLeg(constitution,strength,dexterity,charisma,color,bodytype,race);
-                    rl.id = id;
-                    rl.MaxHP = maxHP;
+                    RightLeg rl = b as RightLeg;
                     rl.skillIDs = new string[1] { InputSkill1.Text};
                     XMLManager.Save(path, rl);
                     break;
                 case "Left Leg":
-                    LeftLeg ll = new LeftLeg(constitution, strength, dexterity, charisma, color, bodytype, race);
-                    ll.id = id;
-                    ll.MaxHP = maxHP;
+                    LeftLeg ll = b as LeftLeg;
                     ll.skillIDs = new string[1] { InputSkill1.Text };
                     XMLManager.Save(path, ll);
                     break;
             }
-            
         }
+
+
     }
 }
