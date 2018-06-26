@@ -7,203 +7,28 @@
         mc:Ignorable="d"
         Title="CollectorsEdition Modbuilder" Height="450" Width="720">
 
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+            <MenuItem Header="Edit">
+                <MenuItem Header="Set Mod" Click="SetMod_Click"></MenuItem>
+                <MenuItem Header="Set Mod Folder" Click="SetModFolder_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <TabControl VerticalAlignment="Stretch" >
+            <TabItem Header="Manifest">
+                <local:ManifestControl/>
+            </TabItem>
+            <TabItem Header="Bodyparts">
+                <local:BodypartControl/>
+            </TabItem>
+            <TabItem Header="NPCs">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="TODO" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="400"/>
 
-    <TabControl >
-        <TabItem Header="Bodyparts">
-            <Grid Background="#FFE5E5E5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <StackPanel Width="150"  VerticalAlignment="Stretch"  HorizontalAlignment="Left">
-                        <StackPanel>
-                            <Label Content="Mod Name" HorizontalAlignment="Left"/>
-                            <TextBox x:Name="InputModname" HorizontalAlignment="Right" Width="150" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                        </StackPanel>
-
-                        <StackPanel Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                            <Label Content="Bodypart" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="selectedBodypart" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"  SelectionChanged="SelectedBodypart_SelectionChanged">
-                                <ComboBoxItem IsSelected="True">Head</ComboBoxItem>
-                                <ComboBoxItem>Torso</ComboBoxItem>
-                                <ComboBoxItem>Right Arm</ComboBoxItem>
-                                <ComboBoxItem>Left Arm</ComboBoxItem>
-                                <ComboBoxItem>Right Leg</ComboBoxItem>
-                                <ComboBoxItem>Left Leg</ComboBoxItem>
-                            </ComboBox>
-                            <Label Content="Bodypart Name" HorizontalAlignment="Left"/>
-                            <TextBox x:Name="InputBodypartName" HorizontalAlignment="Right" Width="150" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel Margin="0,10,0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                            <Label Content="MetaData" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <Label Content="Race" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="selectedRace" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Bodytype" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="selectedBodytype" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Color" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <ComboBox x:Name="selectedColor" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="180" Margin="150,0,0,0">
-                        <StackPanel>
-                            <Label Content="Skills" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <Grid x:Name="Skill1">
-                                <Label Content="Skill 1" HorizontalAlignment="Left"  Width="70" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputSkill1" HorizontalAlignment="Right" Width="110" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Skill2">
-                                <Label Content="Skill 2" HorizontalAlignment="Left"  Width="70" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputSkill2" HorizontalAlignment="Right" Width="110" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Skill3">
-                                <Label Content="Skill 3" HorizontalAlignment="Left"  Width="70" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputSkill3" HorizontalAlignment="Right" Width="110" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" >
-                            <Label Content="Stats" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            <Grid >
-                                <Label Content="Healthpoints" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputHealthpoints" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Charisma">
-                                <Label Content="Charisma" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputCharisma" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Constitution">
-                                <Label Content="Constitution" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputConstitution" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Dexterity">
-                                <Label Content="Dexterity" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputDexterity" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Intelligence">
-                                <Label Content="Intelligence" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputIntelligence" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Strength">
-                                <Label Content="Strength" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputStrength" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                            <Grid x:Name="Wisdom">
-                                <Label Content="Wisdom" HorizontalAlignment="Left"  Width="100" Height="30"  HorizontalContentAlignment="Right"/>
-                                <TextBox x:Name="InputWisdom" HorizontalAlignment="Right" PreviewTextInput="TextBox_IsNumeric" Width="80" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </StackPanel>
-
-                    
                 </Grid>
-                
-                <Grid Grid.Column="1">
-                    <ScrollViewer Margin="0,0,0,30">
-                        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <Expander Header="Idle Animation" Background="LightGray">
-                                <StackPanel>
-                                    <Label>Idle Up Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputIdleUpAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="IdleUpAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Idle Down Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputIdleDownAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="IdleDownAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Idle Side Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputIdleSideAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="IdleSideAnimationPath_Click">...</Button>
-                                    </Grid>
-                                </StackPanel>
-
-                            </Expander>
-                            <Expander Header="Walk Animation" Background="LightGray">
-                                <StackPanel>
-                                    <Label>Walk Up Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputWalkUpAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="WalkUpAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Walk Down Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputWalkDownAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="WalkDownAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Walk Side Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputWalkSideAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="WalkSideAnimationPath_Click">...</Button>
-                                    </Grid>
-                                </StackPanel>
-
-                            </Expander>
-                            <Expander Header="Attack Animation" Background="LightGray">
-                                <StackPanel>
-                                    <Label>Attack Up Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputAttackUpAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="AttackUpAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Attack Down Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputAttackDownAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="AttackDownAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Attack Side Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputAttackSideAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="AttackSideAnimationPath_Click">...</Button>
-                                    </Grid>
-                                </StackPanel>
-
-                            </Expander>
-                            <Expander Header="Magic Animation" Background="LightGray">
-                                <StackPanel>
-                                    <Label>Magic Up Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputMagicUpAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="MagicUpAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Magic Down Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputMagicDownAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="MagicDownAnimationPath_Click">...</Button>
-                                    </Grid>
-                                    <Separator/>
-                                    <Label>Magic Side Animation Path</Label>
-                                    <Grid Margin="0,-5,0,5">
-                                        <TextBox x:Name="InputMagicSideAnimationPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                                        <Button Width="30" HorizontalAlignment="Right" Click="MagicSideAnimationPath_Click">...</Button>
-                                    </Grid>
-                                </StackPanel>
-
-                            </Expander>
-
-                        </StackPanel>
-                    </ScrollViewer>
-                    <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="80" MinHeight="30" Click="Export_Click">Export</Button>
-                    
-                </Grid>
-            </Grid>
-        </TabItem>
-        <TabItem Header="NPCs">
-            <Grid Background="#FFE5E5E5">
-                <Label Content="TODO" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="400"/>
-
-            </Grid>
-        </TabItem>
-    </TabControl>
-
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 
 
 </Window>
