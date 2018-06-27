@@ -17,6 +17,7 @@
                 <StackPanel>
                     <Label Content="Mod Name" HorizontalAlignment="Left"/>
                     <TextBox x:Name="InputModname" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    
                 </StackPanel>
                 <StackPanel>
                     <Label Content="Version" HorizontalAlignment="Left"/>
@@ -37,17 +38,17 @@
                 
                 <Label>Authors (separated by ";")</Label>
                 <Grid Margin="0,-5,0,5">
-                    <TextBox x:Name="InputAuthors" HorizontalAlignment="Stretch"  Height ="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="InputAuthors" HorizontalAlignment="Stretch"  Height ="60" TextAlignment="Left" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True"/>
                 </Grid>
                 <Separator/>
                 <Label>Description</Label>
                 <Grid Margin="0,-5,0,5">
-                    <TextBox x:Name="InputDescription" HorizontalAlignment="Stretch"  Height ="90" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="InputDescription" HorizontalAlignment="Stretch"  Height ="90" TextAlignment="Left" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True"/>
                 </Grid>
                 <Separator/>
                 <Label>Requirements  (separated by ";")</Label>
                 <Grid Margin="0,-5,0,5">
-                    <TextBox x:Name="InputRequirements" HorizontalAlignment="Stretch"  Height ="90" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="InputRequirements" HorizontalAlignment="Stretch"  Height ="90" TextAlignment="Left" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" TextWrapping="Wrap" AcceptsReturn="True"/>
                 </Grid>
                 <Separator/>
             </StackPanel>
