@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Collections;
+using System.Threading.Tasks;
 
 namespace ModBuilder
 {
@@ -121,11 +123,17 @@ namespace ModBuilder
             if (openFileDialog.ShowDialog() == true)
                 InputIdleDownAnimationPath.Text = openFileDialog.FileName;
         }
-        private void IdleSideAnimationPath_Click(object sender, RoutedEventArgs e)
+        private void IdleRightAnimationPath_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                InputIdleSideAnimationPath.Text = openFileDialog.FileName;
+                InputIdleRightAnimationPath.Text = openFileDialog.FileName;
+        }
+        private void IdleLeftAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputIdleLeftAnimationPath.Text = openFileDialog.FileName;
         }
         #endregion
 
@@ -142,11 +150,17 @@ namespace ModBuilder
             if (openFileDialog.ShowDialog() == true)
                 InputWalkDownAnimationPath.Text = openFileDialog.FileName;
         }
-        private void WalkSideAnimationPath_Click(object sender, RoutedEventArgs e)
+        private void WalkRightAnimationPath_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                InputWalkSideAnimationPath.Text = openFileDialog.FileName;
+                InputWalkRightAnimationPath.Text = openFileDialog.FileName;
+        }
+        private void WalkLeftAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputWalkLeftAnimationPath.Text = openFileDialog.FileName;
         }
         #endregion
 
@@ -163,11 +177,17 @@ namespace ModBuilder
             if (openFileDialog.ShowDialog() == true)
                 InputAttackDownAnimationPath.Text = openFileDialog.FileName;
         }
-        private void AttackSideAnimationPath_Click(object sender, RoutedEventArgs e)
+        private void AttackRightAnimationPath_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                InputAttackSideAnimationPath.Text = openFileDialog.FileName;
+                InputAttackRightAnimationPath.Text = openFileDialog.FileName;
+        }
+        private void AttackLeftAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputAttackLeftAnimationPath.Text = openFileDialog.FileName;
         }
         #endregion
 
@@ -184,11 +204,17 @@ namespace ModBuilder
             if (openFileDialog.ShowDialog() == true)
                 InputMagicDownAnimationPath.Text = openFileDialog.FileName;
         }
-        private void MagicSideAnimationPath_Click(object sender, RoutedEventArgs e)
+        private void MagicRightAnimationPath_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                InputMagicSideAnimationPath.Text = openFileDialog.FileName;
+                InputMagicRightAnimationPath.Text = openFileDialog.FileName;
+        }
+        private void MagicLeftAnimationPath_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                InputMagicLeftAnimationPath.Text = openFileDialog.FileName;
         }
         #endregion
 
@@ -216,11 +242,13 @@ namespace ModBuilder
             if (string.IsNullOrWhiteSpace(InputModname.Text))
             {
                 LabelStatus.Content = "Export failed! Please fill out the Modname.";
+                StatusTimer();
                 return;
             }
             if (string.IsNullOrWhiteSpace(InputBodypartName.Text))
             {
                 LabelStatus.Content = "Export failed! Please fill out the Bodypartname.";
+                StatusTimer();
                 return;
             }
             string path;
@@ -287,37 +315,46 @@ namespace ModBuilder
 
             b.id = id;
             b.MaxHP = maxHP;
+            b.Name = InputBodypartName.Text;
 
             CopyFile(InputIconPath.Text, path);
-            b.iconPath = TrimPath(InputIconPath.Text);
+            b.Icon = TrimPath(InputIconPath.Text);
 
             CopyFile(InputIdleDownAnimationPath.Text, path);
             b.idleDownAnimation = TrimPath(InputIdleDownAnimationPath.Text);
             CopyFile(InputIdleUpAnimationPath.Text, path);
             b.idleUpAnimation = TrimPath(InputIdleUpAnimationPath.Text);
-            CopyFile(InputIdleSideAnimationPath.Text, path);
-            b.idleSideAnimation = TrimPath(InputIdleSideAnimationPath.Text);
+            CopyFile(InputIdleRightAnimationPath.Text, path);
+            b.idleRightAnimation = TrimPath(InputIdleRightAnimationPath.Text);
+            CopyFile(InputIdleLeftAnimationPath.Text, path);
+            b.idleLeftAnimation = TrimPath(InputIdleLeftAnimationPath.Text);
 
             CopyFile(InputWalkDownAnimationPath.Text, path);
             b.walkDownAnimation = TrimPath(InputWalkDownAnimationPath.Text);
             CopyFile(InputWalkUpAnimationPath.Text, path);
             b.walkUpAnimation = TrimPath(InputWalkUpAnimationPath.Text);
-            CopyFile(InputWalkSideAnimationPath.Text, path);
-            b.walkSideAnimation = TrimPath(InputWalkSideAnimationPath.Text);
+            CopyFile(InputWalkRightAnimationPath.Text, path);
+            b.walkRightAnimation = TrimPath(InputWalkRightAnimationPath.Text);
+            CopyFile(InputWalkLeftAnimationPath.Text, path);
+            b.walkLeftAnimation = TrimPath(InputWalkLeftAnimationPath.Text);
 
             CopyFile(InputAttackDownAnimationPath.Text, path);
             b.attackDownAnimation = TrimPath(InputAttackDownAnimationPath.Text);
             CopyFile(InputAttackUpAnimationPath.Text, path);
             b.attackUpAnimation = TrimPath(InputAttackUpAnimationPath.Text);
-            CopyFile(InputAttackSideAnimationPath.Text, path);
-            b.attackSideAnimation = TrimPath(InputAttackSideAnimationPath.Text);
+            CopyFile(InputAttackRightAnimationPath.Text, path);
+            b.attackRightAnimation = TrimPath(InputAttackRightAnimationPath.Text);
+            CopyFile(InputAttackLeftAnimationPath.Text, path);
+            b.attackLeftAnimation = TrimPath(InputAttackLeftAnimationPath.Text);
 
             CopyFile(InputMagicDownAnimationPath.Text, path);
             b.magicDownAnimation = TrimPath(InputMagicDownAnimationPath.Text);
             CopyFile(InputMagicUpAnimationPath.Text, path);
             b.magicUpAnimation = TrimPath(InputMagicUpAnimationPath.Text);
-            CopyFile(InputMagicSideAnimationPath.Text, path);
-            b.magicSideAnimation = TrimPath(InputMagicSideAnimationPath.Text);
+            CopyFile(InputMagicRightAnimationPath.Text, path);
+            b.magicRightAnimation = TrimPath(InputMagicRightAnimationPath.Text);
+            CopyFile(InputMagicLeftAnimationPath.Text, path);
+            b.magicLeftAnimation = TrimPath(InputMagicLeftAnimationPath.Text);
 
 
 
@@ -356,6 +393,7 @@ namespace ModBuilder
             }
 
             LabelStatus.Content = "Export successful.";
+            StatusTimer();
         }
 
         public void CopyFile(string oldPath, string newPath)
@@ -377,6 +415,13 @@ namespace ModBuilder
                 }
 
             }
+        }
+
+        public async void StatusTimer()
+        {
+
+            await Task.Delay(5000);
+            LabelStatus.Content = "";
         }
     }
 }
