@@ -218,12 +218,7 @@ namespace ModBuilder
         }
         #endregion
 
-        public string TrimPath(string path)
-        {
-            string[] newPath;
-            newPath = path.Split('\\');
-            return newPath.Last();
-        }
+        
 
         private void IconPath_Click(object sender, RoutedEventArgs e)
         {
@@ -317,44 +312,44 @@ namespace ModBuilder
             b.MaxHP = maxHP;
             b.Name = InputBodypartName.Text;
 
-            CopyFile(InputIconPath.Text, path);
-            b.Icon = TrimPath(InputIconPath.Text);
+            parentWindow.CopyFile(InputIconPath.Text, path);
+            b.Icon = parentWindow.TrimPath(InputIconPath.Text);
 
-            CopyFile(InputIdleDownAnimationPath.Text, path);
-            b.idleDownAnimation = TrimPath(InputIdleDownAnimationPath.Text);
-            CopyFile(InputIdleUpAnimationPath.Text, path);
-            b.idleUpAnimation = TrimPath(InputIdleUpAnimationPath.Text);
-            CopyFile(InputIdleRightAnimationPath.Text, path);
-            b.idleRightAnimation = TrimPath(InputIdleRightAnimationPath.Text);
-            CopyFile(InputIdleLeftAnimationPath.Text, path);
-            b.idleLeftAnimation = TrimPath(InputIdleLeftAnimationPath.Text);
+            parentWindow.CopyFile(InputIdleDownAnimationPath.Text, path);
+            b.idleDownAnimation = parentWindow.TrimPath(InputIdleDownAnimationPath.Text);
+            parentWindow.CopyFile(InputIdleUpAnimationPath.Text, path);
+            b.idleUpAnimation = parentWindow.TrimPath(InputIdleUpAnimationPath.Text);
+            parentWindow.CopyFile(InputIdleRightAnimationPath.Text, path);
+            b.idleRightAnimation = parentWindow.TrimPath(InputIdleRightAnimationPath.Text);
+            parentWindow.CopyFile(InputIdleLeftAnimationPath.Text, path);
+            b.idleLeftAnimation = parentWindow.TrimPath(InputIdleLeftAnimationPath.Text);
 
-            CopyFile(InputWalkDownAnimationPath.Text, path);
-            b.walkDownAnimation = TrimPath(InputWalkDownAnimationPath.Text);
-            CopyFile(InputWalkUpAnimationPath.Text, path);
-            b.walkUpAnimation = TrimPath(InputWalkUpAnimationPath.Text);
-            CopyFile(InputWalkRightAnimationPath.Text, path);
-            b.walkRightAnimation = TrimPath(InputWalkRightAnimationPath.Text);
-            CopyFile(InputWalkLeftAnimationPath.Text, path);
-            b.walkLeftAnimation = TrimPath(InputWalkLeftAnimationPath.Text);
+            parentWindow.CopyFile(InputWalkDownAnimationPath.Text, path);
+            b.walkDownAnimation = parentWindow.TrimPath(InputWalkDownAnimationPath.Text);
+            parentWindow.CopyFile(InputWalkUpAnimationPath.Text, path);
+            b.walkUpAnimation = parentWindow.TrimPath(InputWalkUpAnimationPath.Text);
+            parentWindow.CopyFile(InputWalkRightAnimationPath.Text, path);
+            b.walkRightAnimation = parentWindow.TrimPath(InputWalkRightAnimationPath.Text);
+            parentWindow.CopyFile(InputWalkLeftAnimationPath.Text, path);
+            b.walkLeftAnimation = parentWindow.TrimPath(InputWalkLeftAnimationPath.Text);
 
-            CopyFile(InputAttackDownAnimationPath.Text, path);
-            b.attackDownAnimation = TrimPath(InputAttackDownAnimationPath.Text);
-            CopyFile(InputAttackUpAnimationPath.Text, path);
-            b.attackUpAnimation = TrimPath(InputAttackUpAnimationPath.Text);
-            CopyFile(InputAttackRightAnimationPath.Text, path);
-            b.attackRightAnimation = TrimPath(InputAttackRightAnimationPath.Text);
-            CopyFile(InputAttackLeftAnimationPath.Text, path);
-            b.attackLeftAnimation = TrimPath(InputAttackLeftAnimationPath.Text);
+            parentWindow.CopyFile(InputAttackDownAnimationPath.Text, path);
+            b.attackDownAnimation = parentWindow.TrimPath(InputAttackDownAnimationPath.Text);
+            parentWindow.CopyFile(InputAttackUpAnimationPath.Text, path);
+            b.attackUpAnimation = parentWindow.TrimPath(InputAttackUpAnimationPath.Text);
+            parentWindow.CopyFile(InputAttackRightAnimationPath.Text, path);
+            b.attackRightAnimation = parentWindow.TrimPath(InputAttackRightAnimationPath.Text);
+            parentWindow.CopyFile(InputAttackLeftAnimationPath.Text, path);
+            b.attackLeftAnimation = parentWindow.TrimPath(InputAttackLeftAnimationPath.Text);
 
-            CopyFile(InputMagicDownAnimationPath.Text, path);
-            b.magicDownAnimation = TrimPath(InputMagicDownAnimationPath.Text);
-            CopyFile(InputMagicUpAnimationPath.Text, path);
-            b.magicUpAnimation = TrimPath(InputMagicUpAnimationPath.Text);
-            CopyFile(InputMagicRightAnimationPath.Text, path);
-            b.magicRightAnimation = TrimPath(InputMagicRightAnimationPath.Text);
-            CopyFile(InputMagicLeftAnimationPath.Text, path);
-            b.magicLeftAnimation = TrimPath(InputMagicLeftAnimationPath.Text);
+            parentWindow.CopyFile(InputMagicDownAnimationPath.Text, path);
+            b.magicDownAnimation = parentWindow.TrimPath(InputMagicDownAnimationPath.Text);
+            parentWindow.CopyFile(InputMagicUpAnimationPath.Text, path);
+            b.magicUpAnimation = parentWindow.TrimPath(InputMagicUpAnimationPath.Text);
+            parentWindow.CopyFile(InputMagicRightAnimationPath.Text, path);
+            b.magicRightAnimation = parentWindow.TrimPath(InputMagicRightAnimationPath.Text);
+            parentWindow.CopyFile(InputMagicLeftAnimationPath.Text, path);
+            b.magicLeftAnimation = parentWindow.TrimPath(InputMagicLeftAnimationPath.Text);
 
 
 
@@ -396,26 +391,7 @@ namespace ModBuilder
             StatusTimer();
         }
 
-        public void CopyFile(string oldPath, string newPath)
-        {
-            if (string.IsNullOrWhiteSpace(oldPath)) return;
-            if (oldPath.Contains(newPath))
-            {
-                return;
-            }
-            else
-            {
-                try
-                {
-                    File.Copy(oldPath, newPath + TrimPath(oldPath));
-                }
-                catch (IOException e)
-                {
-
-                }
-
-            }
-        }
+        
 
         public async void StatusTimer()
         {

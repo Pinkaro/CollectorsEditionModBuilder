@@ -12,27 +12,47 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Column="0">
-            <StackPanel Width="150"  VerticalAlignment="Stretch"  HorizontalAlignment="Left">
+        <Grid Grid.Column="0" HorizontalAlignment="Left" Width="330">
+            <StackPanel VerticalAlignment="Stretch"  HorizontalAlignment="Stretch">
                 <StackPanel>
                     <Label Content="Mod Name" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="InputModname" HorizontalAlignment="Right" Width="150" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="InputModname" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </StackPanel>
                 <StackPanel>
                     <Label Content="Version" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="InputVersion" HorizontalAlignment="Right" Width="150" Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="InputVersion" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label>Icon Path</Label>
+                    <Grid Margin="0,-5,0,5">
+                        <TextBox x:Name="InputIconPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
+                        <Button Width="30" HorizontalAlignment="Right" Click="IconPath_Click">...</Button>
+                    </Grid>
                 </StackPanel>
             </StackPanel>
+            
         </Grid>
         <Grid Grid.Column="1">
             <StackPanel>
-                <Label>Icon Path</Label>
+                
+                <Label>Authors (separated by ";")</Label>
                 <Grid Margin="0,-5,0,5">
-                    <TextBox x:Name="InputIconPath" HorizontalAlignment="Stretch"  Height ="30" TextAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,30,0"/>
-                    <Button Width="30" HorizontalAlignment="Right" Click="IconPath_Click">...</Button>
+                    <TextBox x:Name="InputAuthors" HorizontalAlignment="Stretch"  Height ="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Separator/>
+                <Label>Description</Label>
+                <Grid Margin="0,-5,0,5">
+                    <TextBox x:Name="InputDescription" HorizontalAlignment="Stretch"  Height ="90" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+                <Separator/>
+                <Label>Requirements  (separated by ";")</Label>
+                <Grid Margin="0,-5,0,5">
+                    <TextBox x:Name="InputRequirements" HorizontalAlignment="Stretch"  Height ="90" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
                 <Separator/>
             </StackPanel>
+            <Label x:Name="LabelStatus" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="0,0,80,0" Height="30"/>
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="80" MinHeight="30" Click="ExportManifest_Click">Export</Button>
         </Grid>
         
     </Grid>
