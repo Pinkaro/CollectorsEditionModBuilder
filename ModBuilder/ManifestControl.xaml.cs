@@ -87,7 +87,7 @@ namespace ModBuilder
             parentWindow.CopyFile(InputIconPath.Text, path);
             m.Icon = parentWindow.TrimPath(InputIconPath.Text);
 
-            XMLManager.Save(path, m);
+            XMLManager.CreateManifest(path, m);
             LabelStatus.Content = "Export successful.";
             StatusTimer();
 
